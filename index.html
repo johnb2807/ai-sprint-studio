@@ -424,7 +424,7 @@
       position: absolute;
       inset: 28px;
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+      grid-template-columns: 1.45fr 0.75fr;
       gap: 18px;
       align-content: start;
       z-index: 1;
@@ -545,13 +545,16 @@
       overflow-wrap: break-word;
     }
   
-   .dashboard-side {
+    .dashboard-side {
       display: grid;
       gap: 18px;
       align-content: start;
-      min-width: 0;
     }
-    .side-metrics, .side-timeline { padding: 20px; }
+    
+    .side-metrics {
+      padding: 20px;
+      min-height: 260px;
+    }
 
     .mini-chart {
       margin-top: 18px;
@@ -598,13 +601,10 @@
     .dashboard-main,
     .dashboard-side,
     .side-metrics,
-    .side-timeline,
-    .timeline-item,
-    .timeline-box,
     .signal-card {
       min-width: 0;
     }
-      
+
     .dashboard-badge {
       position: absolute;
       right: 22px;
@@ -1365,27 +1365,6 @@
                     <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18" fill="none" stroke="url(#chartStroke)" stroke-width="4" stroke-linecap="round"></path>
                     <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18 L300,128 L0,128 Z" fill="rgba(124,240,201,0.08)"></path>
                   </svg>
-                </div>
-              </div>
-
-              <div class="glass-card side-timeline">
-                <div class="dashboard-label">
-                  <strong>Heute im Prozess</strong>
-                  <span>beispielhaft</span>
-                </div>
-                <div class="timeline-list">
-                  <div class="timeline-item">
-                    <div class="timeline-time">09:10</div>
-                    <div class="timeline-box"><strong>Neue Anfrage erkannt</strong><p>Lead wurde kategorisiert und an das passende Team weitergeleitet.</p></div>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="timeline-time">11:40</div>
-                    <div class="timeline-box"><strong>Terminabgleich gestartet</strong><p>Wunschzeiten aus Formular und Kalender wurden automatisch abgeglichen.</p></div>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="timeline-time">15:05</div>
-                    <div class="timeline-box"><strong>Follow-up vorbereitet</strong><p>Naechste Nachricht inklusive Kontext und Status wurde vorformuliert.</p></div>
-                  </div>
                 </div>
               </div>
             </div>
