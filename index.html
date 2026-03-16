@@ -512,7 +512,11 @@
       z-index: 1;
     }
 
-    .flow-node { padding-top: 26px; }
+    .flow-node {
+      padding-top: 26px;
+      min-width: 0;
+    }
+    
     .flow-node::before {
       content: attr(data-step);
       display: grid;
@@ -527,12 +531,20 @@
       font-weight: 700;
     }
 
-    .flow-node strong {
+     .flow-node strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 0.98rem;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      line-height: 1.25;
     }
 
+    .flow-node p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+  
     .dashboard-side { display: grid; gap: 18px; align-content: start; }
     .side-metrics, .side-timeline { padding: 20px; }
 
