@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -424,7 +424,7 @@
       position: absolute;
       inset: 28px;
       display: grid;
-      grid-template-columns: 1.45fr 0.75fr;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
       gap: 18px;
       align-content: start;
       z-index: 1;
@@ -545,7 +545,12 @@
       overflow-wrap: break-word;
     }
   
-    .dashboard-side { display: grid; gap: 18px; align-content: start; }
+   .dashboard-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      min-width: 0;
+    }
     .side-metrics, .side-timeline { padding: 20px; }
 
     .mini-chart {
@@ -568,7 +573,12 @@
     }
 
     .timeline-list { display: grid; gap: 14px; margin-top: 14px; }
-    .timeline-item { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: start; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
     .timeline-time { font-size: 0.85rem; color: var(--muted); padding-top: 4px; }
 
     .timeline-box {
@@ -576,8 +586,25 @@
       border-radius: var(--radius-md);
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(159, 184, 214, 0.12);
+      min-width: 0;
     }
 
+    .timeline-box strong,
+    .timeline-box p {
+      overflow-wrap: break-word;
+      word-break: normal;
+    }
+
+    .dashboard-main,
+    .dashboard-side,
+    .side-metrics,
+    .side-timeline,
+    .timeline-item,
+    .timeline-box,
+    .signal-card {
+      min-width: 0;
+    }
+      
     .dashboard-badge {
       position: absolute;
       right: 22px;
