@@ -1858,12 +1858,12 @@
       const payload = collectFormData();
       const WEBHOOK_URL = 'https://john2807.app.n8n.cloud/webhook-test/3eb7bc0d-6e57-409e-aaca-afcf6a0dab64';
 
-      // Webhook-Integration vorbereiten:
-      // await fetch(WEBHOOK_URL, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(payload)
-      // });
+      Webhook-Integration vorbereiten:
+      await fetch(WEBHOOK_URL, {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(payload)
+       });
 
       console.log('Demo submit payload:', payload, WEBHOOK_URL);
       form.style.display = 'none';
