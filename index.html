@@ -423,10 +423,6 @@
     .dashboard-shell {
       position: absolute;
       inset: 28px;
-      display: grid;
-      grid-template-columns: 1.45fr 0.75fr;
-      gap: 18px;
-      align-content: start;
       z-index: 1;
     }
 
@@ -439,7 +435,10 @@
       overflow: hidden;
     }
 
-    .dashboard-main { padding: 22px; min-height: 360px; }
+    .dashboard-main {
+      padding: 22px;
+      min-height: 420px;
+    }
     .dashboard-label {
       display: flex;
       align-items: center;
@@ -498,8 +497,8 @@
     .flow-line {
       position: absolute;
       top: 58px;
-      left: 10%;
-      width: 80%;
+      left: 8%;
+      width: 84%;
       height: 2px;
       background: linear-gradient(90deg, rgba(124, 240, 201, 0.18), rgba(124, 240, 201, 0.75), rgba(139, 184, 255, 0.7));
     }
@@ -507,16 +506,12 @@
     .flow-nodes {
       position: relative;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px 18px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
       z-index: 1;
-    }  
-
-    .flow-node {
-      padding-top: 26px;
-      min-width: 0;
     }
-    
+
+    .flow-node { padding-top: 26px; }
     .flow-node::before {
       content: attr(data-step);
       display: grid;
@@ -531,57 +526,14 @@
       font-weight: 700;
     }
 
-     .flow-node strong {
+    .flow-node strong {
       display: block;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      line-height: 1.25;
-    }
-
-    .flow-node p {
-      margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.5;
-      overflow-wrap: break-word;
-    }
-  
-    .dashboard-side {
-      display: grid;
-      gap: 18px;
-      align-content: start;
-    }
-    
-    .side-metrics {
-      padding: 20px;
-      min-height: 260px;
-    }
-
-    .mini-chart {
-      margin-top: 18px;
-      height: 128px;
-      position: relative;
-      border-radius: var(--radius-md);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-        repeating-linear-gradient(90deg, transparent 0 44px, rgba(159, 184, 214, 0.08) 44px 45px),
-        repeating-linear-gradient(180deg, transparent 0 31px, rgba(159, 184, 214, 0.08) 31px 32px);
-      overflow: hidden;
-    }
-
-    .mini-chart svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
     }
 
     .timeline-list { display: grid; gap: 14px; margin-top: 14px; }
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 54px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
+    .timeline-item { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: start; }
     .timeline-time { font-size: 0.85rem; color: var(--muted); padding-top: 4px; }
 
     .timeline-box {
@@ -589,20 +541,6 @@
       border-radius: var(--radius-md);
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(159, 184, 214, 0.12);
-      min-width: 0;
-    }
-
-    .timeline-box strong,
-    .timeline-box p {
-      overflow-wrap: break-word;
-      word-break: normal;
-    }
-
-    .dashboard-main,
-    .dashboard-side,
-    .side-metrics,
-    .signal-card {
-      min-width: 0;
     }
 
     .dashboard-badge {
@@ -623,6 +561,43 @@
       display: block;
       font-size: 1.08rem;
       margin-bottom: 6px;
+    }
+
+    .timeline-section-panel {
+      padding: 30px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 39, 0.8), rgba(9, 19, 34, 0.92));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .timeline-section-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .timeline-intro {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .timeline-note {
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .timeline-panel {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      background: rgba(7, 17, 31, 0.42);
+      box-shadow: 0 18px 38px rgba(3, 8, 18, 0.22);
     }
 
     .trust-panel,
@@ -1213,7 +1188,7 @@
       .cards-3, .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .form-grid { min-height: initial; }
       .form-sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
-      .dashboard-shell { grid-template-columns: 1fr; }
+      .timeline-section-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 820px) {
@@ -1242,7 +1217,7 @@
       .header.nav-open .nav-links { flex-direction: column; align-items: flex-start; }
 
       .hero { padding-top: 24px; }
-      .hero-visual { min-height: 560px; }
+      .hero-visual { min-height: 520px; }
 
       .hero-meta,
       .trust-metrics,
@@ -1347,32 +1322,57 @@
                 </div>
               </div>
             </div>
-
-            <div class="dashboard-side">
-              <div class="glass-card side-metrics">
-                <div class="dashboard-label">
-                  <strong>Pipeline-Dynamik</strong>
-                  <span>letzte 30 Tage</span>
-                </div>
-                <div class="mini-chart" aria-hidden="true">
-                  <svg viewBox="0 0 300 128" preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="chartStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#7cf0c9"></stop>
-                        <stop offset="100%" stop-color="#8bb8ff"></stop>
-                      </linearGradient>
-                    </defs>
-                    <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18" fill="none" stroke="url(#chartStroke)" stroke-width="4" stroke-linecap="round"></path>
-                    <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18 L300,128 L0,128 Z" fill="rgba(124,240,201,0.08)"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="dashboard-badge">
             <strong>Premium Sprint statt Tool-Chaos</strong>
             <p>Wir priorisieren, welche KI- oder Automationsschritte fuer Ihr Team zuerst echten Hebel bringen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prozess-heute">
+      <div class="container reveal">
+        <div class="timeline-section-panel">
+          <div class="timeline-section-grid">
+            <div class="timeline-intro">
+              <div class="eyebrow">Heute im Prozess</div>
+              <h2>So fuehlt sich ein sauberer Ablauf im Alltag an.</h2>
+              <p class="lead">
+                Statt einzelner Tools ohne Verbindung entsteht ein strukturierter Prozess, der Anfragen einordnet,
+                Termine vorbereitet und Follow-ups konsistent weiterfuehrt.
+              </p>
+              <div class="timeline-note">
+                <strong>Worauf es ankommt</strong>
+                <p>Jeder Schritt ist klar zugeordnet, schnell nachvollziehbar und so aufgebaut, dass Teams nicht in manuellen Zwischenwegen haengen bleiben.</p>
+              </div>
+              <div class="timeline-note">
+                <strong>Warum das wichtig ist</strong>
+                <p>Mehr Geschwindigkeit wirkt nur dann professionell, wenn auch Daten, Rueckmeldungen und naechste Aktionen stabil zusammenlaufen.</p>
+              </div>
+            </div>
+
+            <div class="timeline-panel">
+              <div class="dashboard-label">
+                <strong>Heute im Prozess</strong>
+                <span>beispielhaft</span>
+              </div>
+              <div class="timeline-list">
+                <div class="timeline-item">
+                  <div class="timeline-time">09:10</div>
+                  <div class="timeline-box"><strong>Neue Anfrage erkannt</strong><p>Lead wurde kategorisiert und an das passende Team weitergeleitet.</p></div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-time">11:40</div>
+                  <div class="timeline-box"><strong>Terminabgleich gestartet</strong><p>Wunschzeiten aus Formular und Kalender wurden automatisch abgeglichen.</p></div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-time">15:05</div>
+                  <div class="timeline-box"><strong>Follow-up vorbereitet</strong><p>Naechste Nachricht inklusive Kontext und Status wurde vorformuliert.</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
