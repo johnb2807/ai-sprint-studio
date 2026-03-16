@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sprint Studio | KI-Automationen fuer wachstumsorientierte Unternehmen</title>
+  <meta
+    name="description"
+    content="AI Sprint Studio entwickelt hochwertige KI- und Automationsloesungen fuer Unternehmen. Vereinbaren Sie eine kostenlose 20-minuetige Erstberatung."
+  >
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2e;
+      --bg-elevated: rgba(14, 26, 44, 0.72);
+      --panel: rgba(10, 22, 39, 0.82);
+      --panel-strong: rgba(14, 28, 48, 0.94);
+      --line: rgba(159, 184, 214, 0.18);
+      --line-strong: rgba(159, 184, 214, 0.28);
+      --text: #f3f7fb;
+      --muted: #9fb1c7;
+      --muted-strong: #cad6e4;
+      --accent: #7cf0c9;
+      --accent-strong: #46d2a5;
+      --accent-warm: #8bb8ff;
+      --danger: #ff7f90;
+      --shadow: 0 24px 80px rgba(2, 8, 20, 0.45);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --container: 1180px;
+      --header-height: 82px;
+      --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(70, 210, 165, 0.18), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(139, 184, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 50% 80%, rgba(124, 240, 201, 0.09), transparent 28%),
+        linear-gradient(180deg, #07111f 0%, #08111d 35%, #091526 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(30px);
+      opacity: 0.55;
+    }
+
+    body::before {
+      width: 420px;
+      height: 420px;
+      top: -120px;
+      right: -60px;
+      background: radial-gradient(circle, rgba(124, 240, 201, 0.16), transparent 68%);
+    }
+
+    body::after {
+      width: 360px;
+      height: 360px;
+      left: -140px;
+      bottom: 8%;
+      background: radial-gradient(circle, rgba(139, 184, 255, 0.15), transparent 70%);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 20, 35, 0.55);
+      color: var(--muted-strong);
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+      box-shadow: 0 0 18px rgba(124, 240, 201, 0.42);
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(2.9rem, 5vw, 5.3rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 650;
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .lead {
+      font-size: clamp(1.06rem, 1.8vw, 1.24rem);
+      color: var(--muted-strong);
+      max-width: 60ch;
+    }
+
+    .btn,
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 14px 22px;
+      min-height: 52px;
+      cursor: pointer;
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .btn:hover,
+    .button-link:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #d9fff3 130%);
+      color: #06131b;
+      box-shadow: 0 18px 40px rgba(70, 210, 165, 0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .header.is-scrolled {
+      background: rgba(7, 17, 31, 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(3, 8, 18, 0.28);
+      border-bottom-color: rgba(159, 184, 214, 0.12);
+    }
+
+    .header-inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(124, 240, 201, 0.98), rgba(139, 184, 255, 0.92));
+      position: relative;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 24px rgba(70, 210, 165, 0.2);
+      overflow: hidden;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      border-radius: 12px;
+    }
+
+    .brand-mark::before {
+      width: 68%;
+      height: 68%;
+      border: 2px solid rgba(6, 19, 27, 0.46);
+      transform: rotate(45deg);
+    }
+
+    .brand-mark::after {
+      width: 24%;
+      height: 24%;
+      background: rgba(6, 19, 27, 0.86);
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.12);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted-strong);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-toggle span,
+    .nav-toggle::before,
+    .nav-toggle::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: transform var(--transition), opacity var(--transition);
+      position: absolute;
+    }
+
+    .nav-toggle::before { transform: translateY(-6px); }
+    .nav-toggle::after { transform: translateY(6px); }
+    .nav-open .nav-toggle span { opacity: 0; }
+    .nav-open .nav-toggle::before { transform: rotate(45deg); }
+    .nav-open .nav-toggle::after { transform: rotate(-45deg); }
+
+    .hero {
+      padding-top: 44px;
+      padding-bottom: 62px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-copy { padding: 34px 0; }
+    .hero-copy h1 span {
+      color: transparent;
+      background: linear-gradient(135deg, #f8fcff 0%, #9cebd2 42%, #a6c6ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-copy .lead { margin-top: 22px; max-width: 58ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .metric-pill {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: rgba(10, 22, 39, 0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .metric-pill strong {
+      display: block;
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(159, 184, 214, 0.14);
+      background:
+        linear-gradient(180deg, rgba(20, 38, 62, 0.84), rgba(8, 18, 30, 0.96)),
+        radial-gradient(circle at 15% 20%, rgba(124, 240, 201, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 15%, rgba(139, 184, 255, 0.18), transparent 24%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 28px;
+    }
+
+    .hero-orb,
+    .hero-orb::before,
+    .hero-orb::after {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .hero-orb {
+      width: 320px;
+      height: 320px;
+      top: -42px;
+      right: -48px;
+      background: radial-gradient(circle, rgba(124, 240, 201, 0.22), rgba(124, 240, 201, 0) 68%);
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .hero-orb::before,
+    .hero-orb::after {
+      content: "";
+      inset: 0;
+      margin: auto;
+    }
+
+    .hero-orb::before {
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(139, 184, 255, 0.2), transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    .hero-orb::after {
+      width: 35%;
+      height: 35%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28), transparent 80%);
+    }
+
+    .dashboard-shell {
+      position: absolute;
+      inset: 28px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 18px;
+      align-content: start;
+      z-index: 1;
+    }
+
+    .glass-card {
+      background: rgba(10, 23, 39, 0.62);
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      box-shadow: 0 18px 38px rgba(3, 8, 18, 0.22);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .dashboard-main { padding: 22px; min-height: 360px; }
+    .dashboard-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      color: var(--muted-strong);
+      font-size: 0.95rem;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .status-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(124, 240, 201, 0.65);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .signal-card {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(159, 184, 214, 0.1);
+    }
+
+    .signal-card span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+    }
+
+    .signal-card strong { font-size: 1.22rem; }
+
+    .flow-map {
+      position: relative;
+      margin-top: 26px;
+      padding: 26px 0 8px;
+      min-height: 200px;
+    }
+
+    .flow-line {
+      position: absolute;
+      top: 58px;
+      left: 8%;
+      width: 84%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(124, 240, 201, 0.18), rgba(124, 240, 201, 0.75), rgba(139, 184, 255, 0.7));
+    }
+
+    .flow-nodes {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      z-index: 1;
+    }
+
+    .flow-node { padding-top: 26px; }
+    .flow-node::before {
+      content: attr(data-step);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(124, 240, 201, 0.24), rgba(139, 184, 255, 0.25));
+      border: 1px solid rgba(159, 184, 214, 0.18);
+      margin-bottom: 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .flow-node strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .dashboard-side { display: grid; gap: 18px; align-content: start; }
+    .side-metrics, .side-timeline { padding: 20px; }
+
+    .mini-chart {
+      margin-top: 18px;
+      height: 128px;
+      position: relative;
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+        repeating-linear-gradient(90deg, transparent 0 44px, rgba(159, 184, 214, 0.08) 44px 45px),
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(159, 184, 214, 0.08) 31px 32px);
+      overflow: hidden;
+    }
+
+    .mini-chart svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .timeline-list { display: grid; gap: 14px; margin-top: 14px; }
+    .timeline-item { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: start; }
+    .timeline-time { font-size: 0.85rem; color: var(--muted); padding-top: 4px; }
+
+    .timeline-box {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(159, 184, 214, 0.12);
+    }
+
+    .dashboard-badge {
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 14px 16px;
+      min-width: 220px;
+      border-radius: 18px;
+      background: rgba(7, 17, 31, 0.78);
+      border: 1px solid rgba(159, 184, 214, 0.14);
+      box-shadow: 0 18px 30px rgba(3, 8, 18, 0.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .dashboard-badge strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+
+    .trust-panel,
+    .service-card,
+    .audience-card,
+    .benefit-card,
+    .faq-item,
+    .cta-panel,
+    .form-shell,
+    .step-panel {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 39, 0.75), rgba(9, 19, 34, 0.9));
+      box-shadow: 0 20px 44px rgba(3, 8, 18, 0.22);
+    }
+
+    .trust-panel {
+      padding: 26px;
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .trust-grid,
+    .cards-3,
+    .cards-5,
+    .benefit-grid,
+    .faq-layout,
+    .process-layout,
+    .form-grid,
+    .cta-row {
+      display: grid;
+      gap: 24px;
+    }
+
+    .trust-grid { grid-template-columns: 1.15fr 0.85fr; align-items: center; }
+    .trust-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+
+    .trust-stat {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(159, 184, 214, 0.12);
+    }
+
+    .trust-stat strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.05em;
+    }
+
+    .logo-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .logo-chip {
+      padding: 18px 16px;
+      border-radius: 18px;
+      text-align: center;
+      color: var(--muted-strong);
+      border: 1px solid rgba(159, 184, 214, 0.1);
+      background: rgba(255, 255, 255, 0.025);
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .cards-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+
+    .service-card,
+    .audience-card,
+    .benefit-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      min-height: 100%;
+    }
+
+    .service-card::before,
+    .audience-card::before,
+    .benefit-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(124, 240, 201, 0.16), transparent 34%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .service-card:hover,
+    .audience-card:hover,
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      box-shadow: 0 26px 56px rgba(3, 8, 18, 0.32);
+    }
+
+    .service-card:hover::before,
+    .audience-card:hover::before,
+    .benefit-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(145deg, rgba(124, 240, 201, 0.18), rgba(139, 184, 255, 0.16));
+      border: 1px solid rgba(159, 184, 214, 0.16);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .service-card p,
+    .audience-card p,
+    .benefit-card p { margin-top: 12px; }
+
+    .audience-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: var(--muted-strong);
+    }
+
+    .process-layout { grid-template-columns: 0.92fr 1.08fr; align-items: start; }
+    .process-menu { display: grid; gap: 14px; }
+
+    .process-button {
+      width: 100%;
+      text-align: left;
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(10, 22, 39, 0.7);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .process-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(13, 27, 46, 0.9);
+    }
+
+    .process-button.active {
+      border-color: rgba(124, 240, 201, 0.34);
+      background: linear-gradient(180deg, rgba(18, 37, 55, 0.95), rgba(11, 23, 38, 0.94));
+      box-shadow: 0 18px 34px rgba(5, 12, 24, 0.2);
+    }
+
+    .process-button .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(124, 240, 201, 0.22), rgba(139, 184, 255, 0.16));
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .step-panel {
+      min-height: 420px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-glow {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      top: -70px;
+      right: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 240, 201, 0.16), transparent 68%);
+    }
+
+    .step-stage { position: relative; z-index: 1; }
+    .step-progress { display: flex; gap: 10px; margin-bottom: 24px; }
+
+    .step-progress span {
+      height: 6px;
+      flex: 1;
+      border-radius: 999px;
+      background: rgba(159, 184, 214, 0.14);
+      overflow: hidden;
+    }
+
+    .step-progress span::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+      transition: width 320ms ease;
+    }
+
+    .step-progress span.active::after { width: 100%; }
+
+    .step-visual {
+      margin-top: 26px;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .step-visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+
+    .mini-tile {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(6, 19, 27, 0.42);
+      border: 1px solid rgba(159, 184, 214, 0.1);
+      min-height: 96px;
+    }
+
+    .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .benefit-card strong {
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .faq-layout { grid-template-columns: 0.88fr 1.12fr; align-items: start; }
+    .faq-stack { display: grid; gap: 14px; }
+
+    .faq-item { overflow: hidden; transition: border-color var(--transition), background var(--transition); }
+    .faq-item.open {
+      border-color: rgba(124, 240, 201, 0.25);
+      background: linear-gradient(180deg, rgba(13, 27, 46, 0.92), rgba(9, 19, 34, 0.95));
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      padding: 24px;
+      cursor: pointer;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .faq-question span:last-child {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(159, 184, 214, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      color: var(--muted-strong);
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .faq-item.open .faq-question span:last-child {
+      transform: rotate(45deg);
+      background: rgba(124, 240, 201, 0.1);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease, opacity 250ms ease;
+      opacity: 0;
+    }
+
+    .faq-answer-inner { padding: 0 24px 24px; }
+    .faq-item.open .faq-answer { opacity: 1; }
+
+    .faq-side {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 39, 0.84), rgba(10, 22, 39, 0.66));
+      box-shadow: var(--shadow);
+    }
+
+    .faq-checks { display: grid; gap: 14px; margin-top: 24px; }
+
+    .faq-check {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      color: var(--muted-strong);
+    }
+
+    .form-shell { overflow: hidden; position: relative; }
+    .form-grid { grid-template-columns: 0.76fr 1.24fr; min-height: 760px; }
+
+    .form-sidebar {
+      padding: 32px;
+      border-right: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(13, 27, 46, 0.96), rgba(10, 22, 39, 0.98)),
+        radial-gradient(circle at top left, rgba(124, 240, 201, 0.1), transparent 30%);
+    }
+
+    .progress-label { font-size: 0.92rem; color: var(--muted); margin-bottom: 12px; }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(159, 184, 214, 0.12);
+      overflow: hidden;
+      margin-bottom: 26px;
+    }
+
+    .progress-bar {
+      width: 20%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+      transition: width 320ms ease;
+    }
+
+    .form-steps { display: grid; gap: 12px; }
+
+    .form-step-indicator {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+
+    .form-step-indicator.active {
+      color: var(--text);
+      border-color: rgba(124, 240, 201, 0.26);
+      background: rgba(124, 240, 201, 0.08);
+    }
+
+    .form-step-indicator strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: inherit;
+    }
+
+    .form-step-indicator small { display: block; font-size: 0.86rem; color: inherit; }
+
+    .form-stage {
+      position: relative;
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .form-stage::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -160px;
+      bottom: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 240, 201, 0.1), transparent 72%);
+      pointer-events: none;
+    }
+
+    .form-panels { position: relative; min-height: 520px; }
+
+    .form-panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(26px);
+      pointer-events: none;
+      transition: opacity 280ms ease, transform 320ms ease;
+    }
+
+    .form-panel.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+      position: relative;
+    }
+
+    .step-subtitle { color: var(--muted-strong); margin-top: 12px; max-width: 52ch; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+    .field-grid.single { grid-template-columns: 1fr; }
+    .field { display: grid; gap: 10px; }
+    .field label { color: var(--muted-strong); font-size: 0.93rem; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(159, 184, 214, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(124, 240, 201, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 0 4px rgba(124, 240, 201, 0.08);
+    }
+
+    .field textarea { min-height: 148px; resize: vertical; }
+    .form-hint, .error-text { font-size: 0.88rem; }
+    .form-hint { margin-top: 8px; color: var(--muted); }
+    .error-text { min-height: 18px; color: var(--danger); }
+
+    .chip-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { position: relative; cursor: pointer; }
+    .chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+    .chip span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 184, 214, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted-strong);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition), color var(--transition);
+    }
+
+    .chip:hover span {
+      transform: translateY(-1px);
+      border-color: rgba(159, 184, 214, 0.24);
+    }
+
+    .chip input:checked + span {
+      background: rgba(124, 240, 201, 0.12);
+      border-color: rgba(124, 240, 201, 0.3);
+      color: var(--text);
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(159, 184, 214, 0.12);
+    }
+
+    .review-list { display: grid; gap: 14px; margin-top: 26px; }
+
+    .review-item {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(159, 184, 214, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .review-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--muted-strong);
+    }
+
+    .review-item p {
+      color: var(--text);
+      font-size: 0.96rem;
+      white-space: pre-wrap;
+    }
+
+    .success-state {
+      display: none;
+      padding: 34px;
+      min-height: 520px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-state.active { display: flex; }
+
+    .success-card {
+      width: min(620px, 100%);
+      text-align: center;
+      padding: 42px 32px;
+      border-radius: 28px;
+      border: 1px solid rgba(124, 240, 201, 0.18);
+      background: linear-gradient(180deg, rgba(13, 27, 46, 0.95), rgba(10, 22, 39, 0.95));
+      box-shadow: 0 24px 70px rgba(3, 8, 18, 0.34);
+    }
+
+    .success-icon {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 22px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      background: linear-gradient(145deg, rgba(124, 240, 201, 0.22), rgba(139, 184, 255, 0.2));
+      border: 1px solid rgba(124, 240, 201, 0.2);
+    }
+
+    .cta-panel {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -60px -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 184, 255, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-row {
+      align-items: center;
+      grid-template-columns: 1fr auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer {
+      padding: 36px 0 44px;
+      border-top: 1px solid rgba(159, 184, 214, 0.12);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes drift {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(-18px, 18px, 0) scale(1.06); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.94); opacity: 0.75; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .trust-grid,
+      .process-layout,
+      .faq-layout,
+      .form-grid,
+      .cta-row { grid-template-columns: 1fr; }
+      .cards-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .cards-3, .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .form-grid { min-height: initial; }
+      .form-sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+      .dashboard-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      .container { width: min(var(--container), calc(100% - 28px)); }
+      .section { padding: 78px 0; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links, .nav .header-cta { display: none; }
+
+      .header.nav-open .nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 14px;
+        right: 14px;
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        border-radius: 24px;
+        background: rgba(7, 17, 31, 0.95);
+        border: 1px solid rgba(159, 184, 214, 0.12);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .header.nav-open .nav-links,
+      .header.nav-open .nav .header-cta { display: flex; }
+      .header.nav-open .nav-links { flex-direction: column; align-items: flex-start; }
+
+      .hero { padding-top: 24px; }
+      .hero-visual { min-height: 560px; }
+
+      .hero-meta,
+      .trust-metrics,
+      .logo-row,
+      .cards-3,
+      .benefit-grid,
+      .cards-5,
+      .field-grid,
+      .step-visual-grid { grid-template-columns: 1fr; }
+
+      .signal-grid,
+      .flow-nodes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .flow-line { display: none; }
+      .form-stage, .form-sidebar, .step-panel, .faq-side, .cta-panel { padding: 24px; }
+      .form-actions { flex-direction: column-reverse; align-items: stretch; }
+      .btn, .button-link { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="AI Sprint Studio Startseite">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>AI Sprint Studio</span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <div class="nav-links">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#zielgruppen">Zielgruppen</a>
+          <a href="#prozess">Ablauf</a>
+          <a href="#faq">FAQ</a>
+          <a href="#beratung">Beratung</a>
+        </div>
+        <a class="btn btn-primary header-cta" href="#beratung">Erstgespraech anfragen</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Navigation oeffnen">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">KI-Beratung & Automationsdesign fuer wachsende Teams</div>
+          <h1>Mehr Klarheit, weniger manuelle Arbeit, <span>schnellere Prozesse.</span></h1>
+          <p class="lead">
+            AI Sprint Studio entwickelt durchdachte KI- und Automationsloesungen fuer Unternehmen, die wiederkehrende Ablaufe
+            effizienter, professioneller und besser skalierbar machen wollen.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#beratung">Kostenlose Erstberatung anfragen</a>
+            <a class="btn btn-secondary" href="#prozess">So funktioniert's</a>
+          </div>
+          <div class="hero-meta">
+            <div class="metric-pill">
+              <strong>20 Min.</strong>
+              <p>Kompaktes Erstgespraech mit klarer Einschaetzung und naechstem sinnvollen Schritt.</p>
+            </div>
+            <div class="metric-pill">
+              <strong>Fokus auf Praxis</strong>
+              <p>Keine Buzzwords, sondern Prozesse, die sich in Ihrem Alltag wirklich auszahlen.</p>
+            </div>
+            <div class="metric-pill">
+              <strong>Schneller Start</strong>
+              <p>Von der Analyse bis zur ersten umsetzbaren Automationsskizze in kurzer Zeit.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-orb" aria-hidden="true"></div>
+          <div class="dashboard-shell">
+            <div class="glass-card dashboard-main">
+              <div class="dashboard-label">
+                <strong>Automation Control Layer</strong>
+                <span class="status-dot">Live abgestimmt</span>
+              </div>
+              <div class="signal-grid">
+                <div class="signal-card"><span>Leads priorisiert</span><strong>+43%</strong></div>
+                <div class="signal-card"><span>Manuelle Schritte</span><strong>-31%</strong></div>
+                <div class="signal-card"><span>Reaktionszeit</span><strong>2,4h</strong></div>
+              </div>
+              <div class="flow-map">
+                <div class="flow-line"></div>
+                <div class="flow-nodes">
+                  <div class="flow-node" data-step="01"><strong>Anfrage</strong><p>Kontakt landet strukturiert im richtigen Prozess.</p></div>
+                  <div class="flow-node" data-step="02"><strong>Qualifizierung</strong><p>KI prueft Relevanz, Kontext und Prioritaet.</p></div>
+                  <div class="flow-node" data-step="03"><strong>Routing</strong><p>CRM, Mail oder Kalender werden automatisch angesteuert.</p></div>
+                  <div class="flow-node" data-step="04"><strong>Follow-up</strong><p>Erinnerungen und Antworten laufen konsistent weiter.</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-side">
+              <div class="glass-card side-metrics">
+                <div class="dashboard-label">
+                  <strong>Pipeline-Dynamik</strong>
+                  <span>letzte 30 Tage</span>
+                </div>
+                <div class="mini-chart" aria-hidden="true">
+                  <svg viewBox="0 0 300 128" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#7cf0c9"></stop>
+                        <stop offset="100%" stop-color="#8bb8ff"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18" fill="none" stroke="url(#chartStroke)" stroke-width="4" stroke-linecap="round"></path>
+                    <path d="M0,95 C32,100 44,70 74,74 C105,78 126,34 152,42 C178,50 186,14 216,22 C244,30 258,58 300,18 L300,128 L0,128 Z" fill="rgba(124,240,201,0.08)"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="glass-card side-timeline">
+                <div class="dashboard-label">
+                  <strong>Heute im Prozess</strong>
+                  <span>beispielhaft</span>
+                </div>
+                <div class="timeline-list">
+                  <div class="timeline-item">
+                    <div class="timeline-time">09:10</div>
+                    <div class="timeline-box"><strong>Neue Anfrage erkannt</strong><p>Lead wurde kategorisiert und an das passende Team weitergeleitet.</p></div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-time">11:40</div>
+                    <div class="timeline-box"><strong>Terminabgleich gestartet</strong><p>Wunschzeiten aus Formular und Kalender wurden automatisch abgeglichen.</p></div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-time">15:05</div>
+                    <div class="timeline-box"><strong>Follow-up vorbereitet</strong><p>Naechste Nachricht inklusive Kontext und Status wurde vorformuliert.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-badge">
+            <strong>Premium Sprint statt Tool-Chaos</strong>
+            <p>Wir priorisieren, welche KI- oder Automationsschritte fuer Ihr Team zuerst echten Hebel bringen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vertrauen">
+      <div class="container reveal">
+        <div class="trust-panel">
+          <div class="trust-grid">
+            <div>
+              <div class="eyebrow">Vertrauen & Orientierung</div>
+              <h2>Fuer Unternehmen, die Effizienz spuerbar verbessern wollen.</h2>
+              <p class="lead" style="margin-top: 14px;">Gute Automatisierung fuehlt sich nicht technisch ueberladen an, sondern entlastet Teams im Alltag. Genau darauf ist unser Beratungsansatz ausgelegt.</p>
+              <div class="trust-metrics" style="margin-top: 28px;">
+                <div class="trust-stat"><strong>+ schneller</strong><p>Reaktionszeiten in Lead- und Serviceprozessen werden deutlich kuerzer.</p></div>
+                <div class="trust-stat"><strong>- Aufwand</strong><p>Weniger manuelle Routinen in wiederkehrenden internen Schritten.</p></div>
+                <div class="trust-stat"><strong>+ Klarheit</strong><p>Bessere Prozesssicht statt vieler einzelner Tools ohne Struktur.</p></div>
+              </div>
+            </div>
+            <div>
+              <p style="margin-bottom: 16px; color: var(--muted-strong);">Typische Branchen und Einsatzfelder</p>
+              <div class="logo-row">
+                <div class="logo-chip">Service Firms</div>
+                <div class="logo-chip">Agency Ops</div>
+                <div class="logo-chip">Craft Teams</div>
+                <div class="logo-chip">Local Business</div>
+                <div class="logo-chip">Sales Ops</div>
+                <div class="logo-chip">SMB Growth</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Leistungen</div>
+          <h2>Was wir konkret fuer Sie aufsetzen und verbessern.</h2>
+          <p class="lead" style="margin-top: 14px;">Wir gestalten Systeme, die im Hintergrund sauber arbeiten und im Alltag sofort Entlastung schaffen.</p>
+        </div>
+        <div class="cards-3">
+          <article class="service-card reveal"><div class="card-icon">01</div><h3>Lead-Automatisierung</h3><p>Anfragen erfassen, priorisieren und ohne manuelles Copy-Paste an die richtigen Stellen weitergeben.</p></article>
+          <article class="service-card reveal"><div class="card-icon">02</div><h3>KI-gestuetzte Qualifizierung</h3><p>Relevante Informationen schneller erkennen und Anfragen besser fuer Vertrieb oder Service vorsortieren.</p></article>
+          <article class="service-card reveal"><div class="card-icon">03</div><h3>Terminprozesse & Reminder</h3><p>Wunschtermine, Rueckmeldungen und Erinnerungen sauber orchestrieren, ohne dass etwas liegen bleibt.</p></article>
+          <article class="service-card reveal"><div class="card-icon">04</div><h3>Interne Workflow-Automationen</h3><p>Routineprozesse zwischen Formularen, Tabellen, CRM oder Projekttools effizient miteinander verbinden.</p></article>
+          <article class="service-card reveal"><div class="card-icon">05</div><h3>CRM- und Mail-Prozesse</h3><p>Strukturierte Datenuebergaben, Follow-ups und Statusupdates fuer ein konsistentes Kundenerlebnis.</p></article>
+          <article class="service-card reveal"><div class="card-icon">06</div><h3>KI-gestuetzte Kundenkommunikation</h3><p>Vorqualifizierte Antworten, Anfragezusammenfassungen und klare Prozesse fuer mehr Professionalitaet.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="zielgruppen">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Geeignet fuer</div>
+          <h2>Besonders interessant fuer Teams mit wiederkehrenden Prozessen.</h2>
+          <p class="lead" style="margin-top: 14px;">Wenn Aufgaben regelmaessig wiederkehren, Kommunikationswege unklar werden oder Reaktionszeiten leiden, gibt es meist schnell identifizierbare Hebel.</p>
+        </div>
+        <div class="cards-5">
+          <article class="audience-card reveal"><h3>Agenturen</h3><strong>Leadhandling, Angebotsstrecken, Projektstarts</strong><p>Weniger operative Reibung bei neuen Anfragen und internen Abstimmungen.</p></article>
+          <article class="audience-card reveal"><h3>Dienstleister</h3><strong>Kontaktaufnahme, Terminierung, Nachverfolgung</strong><p>Konstante Antwortgeschwindigkeit und sauberere Uebergaben im Team.</p></article>
+          <article class="audience-card reveal"><h3>Handwerksbetriebe</h3><strong>Anfragen, Rueckrufe, Vorqualifizierung</strong><p>Mehr Struktur fuer eingehende Anfragen, ohne den Arbeitsalltag zu verkomplizieren.</p></article>
+          <article class="audience-card reveal"><h3>Lokale Unternehmen</h3><strong>Serviceanfragen, Follow-ups, Leads</strong><p>Professionellerer Auftritt und weniger verlorene Chancen bei knappen Kapazitaeten.</p></article>
+          <article class="audience-card reveal"><h3>Kleine Teams</h3><strong>Wiederkehrende manuelle Aufgaben</strong><p>Gerade bei schmalen Ressourcen lohnt sich gezielte Entlastung besonders schnell.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prozess">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Zusammenarbeit</div>
+          <h2>So laeuft ein Projekt mit AI Sprint Studio ab.</h2>
+          <p class="lead" style="margin-top: 14px;">Transparent, strukturiert und mit Fokus auf den naechsten sinnvollen Hebel statt auf moeglichst viele Baustellen.</p>
+        </div>
+        <div class="process-layout">
+          <div class="process-menu reveal" role="tablist" aria-label="Projektablauf">
+            <button class="process-button active" type="button" data-step-target="0" role="tab" aria-selected="true"><span class="step-number">01</span><h3>Erstgespraech</h3><p>Wir verstehen, wo Reibung entsteht und welche Ziele fuer Sie im Alltag wirklich relevant sind.</p></button>
+            <button class="process-button" type="button" data-step-target="1" role="tab" aria-selected="false"><span class="step-number">02</span><h3>Prozessanalyse</h3><p>Wir identifizieren die Schritte, an denen KI oder Automation echten, messbaren Nutzen liefern.</p></button>
+            <button class="process-button" type="button" data-step-target="2" role="tab" aria-selected="false"><span class="step-number">03</span><h3>Konzeption</h3><p>Sie erhalten eine klare Loesungsskizze mit Systemlogik, Datenfluss und pragmatischen Prioritaeten.</p></button>
+            <button class="process-button" type="button" data-step-target="3" role="tab" aria-selected="false"><span class="step-number">04</span><h3>Umsetzung & Rollout</h3><p>Wir setzen strukturiert auf, testen die Ablaufe und begleiten den Uebergang in den echten Betrieb.</p></button>
+          </div>
+          <div class="step-panel reveal" role="tabpanel" aria-live="polite">
+            <div class="step-glow" aria-hidden="true"></div>
+            <div class="step-stage">
+              <div class="step-progress"><span class="active"></span><span></span><span></span><span></span></div>
+              <div class="process-content">
+                <div class="eyebrow">Schritt 1</div>
+                <h3 id="process-title">Erstgespraech mit Fokus auf Hebel und Machbarkeit</h3>
+                <p id="process-copy" class="step-subtitle">Im kostenlosen Erstgespraech schauen wir auf Ihre aktuelle Situation, Engpaesse und moegliche Ansatzpunkte. Ziel ist keine theoretische Beratung, sondern eine klare Einschaetzung, ob und wo sich ein Sprint lohnt.</p>
+                <div class="step-visual">
+                  <strong id="process-highlight">Was Sie danach wissen:</strong>
+                  <div class="step-visual-grid" id="process-tiles">
+                    <div class="mini-tile"><h4>Passende Startpunkte</h4><p>Welche Prozesse zuerst angegangen werden sollten.</p></div>
+                    <div class="mini-tile"><h4>Realistische Prioritaeten</h4><p>Was kurzfristig Sinn ergibt und was besser spaeter folgt.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="vorteile">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Nutzen</div>
+          <h2>Der Mehrwert liegt nicht im Tool, sondern in besserer Operative.</h2>
+          <p class="lead" style="margin-top: 14px;">Gute Automationen entlasten nicht nur einzelne Schritte, sondern verbessern das Zusammenspiel zwischen Anfrage, Bearbeitung und Rueckmeldung.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal"><strong>Mehr Zeit fuer relevante Arbeit</strong><p>Wiederkehrende Routinen werden abgefangen, damit sich Ihr Team auf Kunden, Projekte und Qualitaet konzentrieren kann.</p></article>
+          <article class="benefit-card reveal"><strong>Weniger Fehler in manuellen Uebergaben</strong><p>Informationen werden konsistenter weitergegeben, was Rueckfragen, Dopplungen und verlorene Details reduziert.</p></article>
+          <article class="benefit-card reveal"><strong>Schnellere Reaktionszeiten</strong><p>Besonders bei Leads und Serviceanfragen entscheidet oft Geschwindigkeit ueber den ersten Eindruck und die Abschlusschance.</p></article>
+          <article class="benefit-card reveal"><strong>Bessere Leadbearbeitung</strong><p>Wichtige Anfragen werden frueher erkannt, strukturiert bewertet und nicht zwischen Postfaechern oder Tabellen verteilt.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="faq-layout">
+          <div class="faq-side reveal">
+            <div class="eyebrow">FAQ</div>
+            <h2>Hauefige Fragen vor dem Erstgespraech.</h2>
+            <p class="lead" style="margin-top: 14px;">Die Erstberatung ist bewusst niedrigschwellig angelegt: klar, kompakt und ohne technische Ueberforderung.</p>
+            <div class="faq-checks">
+              <div class="faq-check">20 Minuten, klare Einschaetzung, keine unnoetige Komplexitaet.</div>
+              <div class="faq-check">Auch sinnvoll, wenn erst eine grobe Idee vorhanden ist.</div>
+              <div class="faq-check">Verstaendlich fuer Teams ohne tiefes Technik-Know-how.</div>
+            </div>
+          </div>
+          <div class="faq-stack">
+            <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Fuer wen lohnt sich eine Erstberatung?</span><span>+</span></button><div class="faq-answer"><div class="faq-answer-inner"><p>Fuer Unternehmen, die wiederkehrende Aufgaben effizienter gestalten wollen, schneller auf Anfragen reagieren muessen oder vorhandene Prozesse mit KI sinnvoll entlasten moechten.</p></div></div></article>
+            <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Wie laeuft das Gespraech ab?</span><span>+</span></button><div class="faq-answer"><div class="faq-answer-inner"><p>Wir sprechen ueber Ihren aktuellen Ablauf, Engpaesse und Ziele. Danach erhalten Sie eine erste Einschaetzung, welche Automations- oder KI-Ansatzpunkte kurzfristig sinnvoll waeren.</p></div></div></article>
+            <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Muss ich schon ein konkretes Projekt haben?</span><span>+</span></button><div class="faq-answer"><div class="faq-answer-inner"><p>Nein. Oft reicht bereits ein klares Problem oder das Gefuehl, dass zu viel Zeit in manuelle Ablaufe fliesst. Gemeinsam schaerfen wir den passenden Startpunkt.</p></div></div></article>
+            <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Wie technisch muss ich dafuer sein?</span><span>+</span></button><div class="faq-answer"><div class="faq-answer-inner"><p>Gar nicht besonders. Entscheidend ist Ihr Prozessverstaendnis. Die technische Komplexitaet uebersetzen wir in verstaendliche, umsetzbare Schritte.</p></div></div></article>
+            <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Wie schnell kann eine erste Automation umgesetzt werden?</span><span>+</span></button><div class="faq-answer"><div class="faq-answer-inner"><p>Das haengt von Prozess, Schnittstellen und Zielbild ab. In vielen Faellen laesst sich aber bereits kurzfristig ein erster sinnvoller Automationsschritt definieren und vorbereiten.</p></div></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="beratung">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Kostenlose Erstberatung</div>
+          <h2>Vereinbaren Sie Ihr 20-minuetiges Erstgespraech.</h2>
+          <p class="lead" style="margin-top: 14px;">Das Formular fuehrt in wenigen Schritten durch die wichtigsten Informationen. So koennen wir das Gespraech gezielter vorbereiten und spaeter problemlos an einen Webhook anbinden.</p>
+        </div>
+        <div class="form-shell reveal">
+          <div class="form-grid" id="consultationShell">
+            <aside class="form-sidebar">
+              <div class="eyebrow">Beratungsanfrage</div>
+              <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Ihr Anfrage-Flow</h3>
+              <p>Strukturiert, klar und so aufgebaut, dass ein spaeterer Anschluss an CRM oder Webhook sauber moeglich ist.</p>
+              <div style="margin-top: 28px;">
+                <div class="progress-label">Fortschritt</div>
+                <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+              </div>
+              <div class="form-steps" id="stepIndicators">
+                <div class="form-step-indicator active"><strong>1. Kontaktdaten</strong><small>Wer meldet sich bei uns?</small></div>
+                <div class="form-step-indicator"><strong>2. Qualifizierung</strong><small>Worum geht es grob?</small></div>
+                <div class="form-step-indicator"><strong>3. Terminwunsch</strong><small>Wann passt ein Erstgespraech?</small></div>
+                <div class="form-step-indicator"><strong>4. Anliegen</strong><small>Mehr Kontext fuer die Vorbereitung.</small></div>
+                <div class="form-step-indicator"><strong>5. Review</strong><small>Alles noch einmal pruefen und absenden.</small></div>
+              </div>
+            </aside>
+            <div class="form-stage">
+              <form id="consultationForm" novalidate>
+                <div class="form-panels">
+                  <section class="form-panel active" data-step="0">
+                    <div class="eyebrow">Schritt 1</div>
+                    <h3>Kontaktdaten</h3>
+                    <p class="step-subtitle">Die wichtigsten Angaben fuer Rueckmeldung und Einordnung Ihres Unternehmens.</p>
+                    <div class="field-grid">
+                      <div class="field"><label for="name">Name *</label><input id="name" name="name" type="text" required placeholder="Vor- und Nachname"><div class="error-text" data-error-for="name"></div></div>
+                      <div class="field"><label for="email">E-Mail *</label><input id="email" name="email" type="email" required placeholder="name@firma.de"><div class="error-text" data-error-for="email"></div></div>
+                      <div class="field"><label for="phone">Telefonnummer *</label><input id="phone" name="phone" type="tel" required placeholder="+49 ..."><div class="error-text" data-error-for="phone"></div></div>
+                      <div class="field"><label for="company">Firma *</label><input id="company" name="company" type="text" required placeholder="Unternehmensname"><div class="error-text" data-error-for="company"></div></div>
+                    </div>
+                  </section>
+                  <section class="form-panel" data-step="1">
+                    <div class="eyebrow">Schritt 2</div>
+                    <h3>Qualifizierung</h3>
+                    <p class="step-subtitle">Damit wir das Gespraech passender vorbereiten koennen, helfen ein paar Kontextangaben.</p>
+                    <div class="field-grid">
+                      <div class="field"><label for="industry">Branche *</label><select id="industry" name="industry" required><option value="">Bitte waehlen</option><option>Agentur</option><option>Dienstleister</option><option>Handwerk</option><option>Lokales Unternehmen</option><option>E-Commerce</option><option>Sonstiges</option></select><div class="error-text" data-error-for="industry"></div></div>
+                      <div class="field"><label for="team_size">Teamgroesse *</label><select id="team_size" name="team_size" required><option value="">Bitte waehlen</option><option>1-5 Mitarbeitende</option><option>6-15 Mitarbeitende</option><option>16-50 Mitarbeitende</option><option>51+ Mitarbeitende</option></select><div class="error-text" data-error-for="team_size"></div></div>
+                    </div>
+                    <div class="field" style="margin-top: 22px;">
+                      <label>Wofuer interessieren Sie sich? *</label>
+                      <div class="chip-group">
+                        <label class="chip"><input type="checkbox" name="interest" value="Leadgenerierung"><span>Leadgenerierung</span></label>
+                        <label class="chip"><input type="checkbox" name="interest" value="Interne Prozesse"><span>Interne Prozesse</span></label>
+                        <label class="chip"><input type="checkbox" name="interest" value="KI-Chatbot"><span>KI-Chatbot</span></label>
+                        <label class="chip"><input type="checkbox" name="interest" value="Automationen"><span>Automationen</span></label>
+                        <label class="chip"><input type="checkbox" name="interest" value="Beratung allgemein"><span>Beratung allgemein</span></label>
+                      </div>
+                      <div class="error-text" data-error-for="interest"></div>
+                    </div>
+                    <div class="field" style="margin-top: 22px;">
+                      <label>Wie dringend ist das Thema? *</label>
+                      <div class="chip-group">
+                        <label class="chip"><input type="radio" name="urgency" value="sofort" required><span>Sofort</span></label>
+                        <label class="chip"><input type="radio" name="urgency" value="in 1-4 Wochen"><span>In 1-4 Wochen</span></label>
+                        <label class="chip"><input type="radio" name="urgency" value="spaeter"><span>Spaeter</span></label>
+                      </div>
+                      <div class="error-text" data-error-for="urgency"></div>
+                    </div>
+                  </section>
+                  <section class="form-panel" data-step="2">
+                    <div class="eyebrow">Schritt 3</div>
+                    <h3>Terminwunsch</h3>
+                    <p class="step-subtitle">Dies ist zunaechst ein Terminwunsch. Die finale Bestaetigung erfolgt nach Abgleich.</p>
+                    <div class="field-grid">
+                      <div class="field"><label for="preferred_date">Wunschdatum *</label><input id="preferred_date" name="preferred_date" type="date" required><div class="error-text" data-error-for="preferred_date"></div></div>
+                      <div class="field"><label for="preferred_time">Wunschzeit *</label><input id="preferred_time" name="preferred_time" type="time" required><div class="error-text" data-error-for="preferred_time"></div></div>
+                      <div class="field"><label for="alternate_time">Alternative Wunschzeit</label><input id="alternate_time" name="alternate_time" type="time"><div class="error-text" data-error-for="alternate_time"></div></div>
+                    </div>
+                    <p class="form-hint">Falls Ihr gewuenschter Slot nicht verfuegbar ist, melden wir uns mit einer passenden Alternative.</p>
+                  </section>
+                  <section class="form-panel" data-step="3">
+                    <div class="eyebrow">Schritt 4</div>
+                    <h3>Anliegen und Rahmen</h3>
+                    <p class="step-subtitle">Ein kurzer Einblick hilft uns, das Gespraech direkt auf Ihren Fall auszurichten.</p>
+                    <div class="field-grid single">
+                      <div class="field"><label for="project_summary">Kurze Beschreibung Ihres Anliegens *</label><textarea id="project_summary" name="project_summary" required placeholder="Welche Prozesse moechten Sie verbessern? Wo entsteht aktuell manuelle Arbeit oder Reibung?"></textarea><div class="error-text" data-error-for="project_summary"></div></div>
+                    </div>
+                    <div class="field" style="margin-top: 22px;">
+                      <label>Budget / Investitionsbereitschaft *</label>
+                      <div class="chip-group">
+                        <label class="chip"><input type="radio" name="budget" value="noch offen" required><span>Noch offen</span></label>
+                        <label class="chip"><input type="radio" name="budget" value="unter 1.000 EUR"><span>Unter 1.000 EUR</span></label>
+                        <label class="chip"><input type="radio" name="budget" value="1.000-5.000 EUR"><span>1.000-5.000 EUR</span></label>
+                        <label class="chip"><input type="radio" name="budget" value="5.000 EUR+"><span>5.000 EUR+</span></label>
+                      </div>
+                      <div class="error-text" data-error-for="budget"></div>
+                    </div>
+                  </section>
+                  <section class="form-panel" data-step="4">
+                    <div class="eyebrow">Schritt 5</div>
+                    <h3>Review und Abschluss</h3>
+                    <p class="step-subtitle">Bitte pruefen Sie Ihre Angaben kurz. Danach koennen Sie die Demo-Anfrage absenden.</p>
+                    <div class="review-list" id="reviewList"></div>
+                    <p class="form-hint">Der Versand ist aktuell als Frontend-Demo vorbereitet. Die Webhook-Integration kann spaeter direkt an der markierten Stelle ergaenzt werden.</p>
+                  </section>
+                </div>
+                <div class="form-actions">
+                  <button class="btn btn-secondary" type="button" id="prevBtn">Zurueck</button>
+                  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end;">
+                    <a class="button-link btn-secondary" href="#top">Nach oben</a>
+                    <button class="btn btn-primary" type="button" id="nextBtn">Weiter</button>
+                  </div>
+                </div>
+              </form>
+              <div class="success-state" id="successState" aria-live="polite">
+                <div class="success-card">
+                  <div class="success-icon">OK</div>
+                  <h3 style="font-size: 2rem; margin-bottom: 14px;">Vielen Dank fuer Ihre Anfrage.</h3>
+                  <p class="lead" style="margin: 0 auto 24px;">Ihre Angaben wurden in dieser Demo erfolgreich verarbeitet. Ein echter Versand kann spaeter ueber den vorbereiteten Webhook-Anschluss aktiviert werden.</p>
+                  <a class="btn btn-primary" href="#top">Zurueck zur Startseite</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="cta-row">
+            <div>
+              <div class="eyebrow">Naechster Schritt</div>
+              <h2>Wenn Prozesse Sie ausbremsen, ist jetzt ein guter Zeitpunkt fuer Klarheit.</h2>
+              <p class="lead" style="margin-top: 14px;">Im Erstgespraech schaetzen wir ein, wo KI oder Automation fuer Ihr Unternehmen sinnvoll ansetzt und welche Umsetzungsschritte wirklich Prioritaet haben.</p>
+            </div>
+            <a class="btn btn-primary" href="#beratung">Erstgespraech starten</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>AI Sprint Studio</span></div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prozess">Ablauf</a>
+        <a href="#beratung">Erstgespraech</a>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="mailto:kontakt@aisprintstudio.de">kontakt@aisprintstudio.de</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const revealItems = document.querySelectorAll('.reveal');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const processButtons = document.querySelectorAll('.process-button');
+    const processTitle = document.getElementById('process-title');
+    const processCopy = document.getElementById('process-copy');
+    const processHighlight = document.getElementById('process-highlight');
+    const processTiles = document.getElementById('process-tiles');
+    const progressSegments = document.querySelectorAll('.step-progress span');
+    const form = document.getElementById('consultationForm');
+    const panels = document.querySelectorAll('.form-panel');
+    const stepIndicators = document.querySelectorAll('.form-step-indicator');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const reviewList = document.getElementById('reviewList');
+    const successState = document.getElementById('successState');
+    const consultationShell = document.getElementById('consultationShell');
+
+    const processSteps = [
+      { step: 'Schritt 1', title: 'Erstgespraech mit Fokus auf Hebel und Machbarkeit', copy: 'Im kostenlosen Erstgespraech schauen wir auf Ihre aktuelle Situation, Engpaesse und moegliche Ansatzpunkte. Ziel ist keine theoretische Beratung, sondern eine klare Einschaetzung, ob und wo sich ein Sprint lohnt.', highlight: 'Was Sie danach wissen:', tiles: [{ title: 'Passende Startpunkte', text: 'Welche Prozesse zuerst angegangen werden sollten.' }, { title: 'Realistische Prioritaeten', text: 'Was kurzfristig Sinn ergibt und was besser spaeter folgt.' }] },
+      { step: 'Schritt 2', title: 'Analyse der bestehenden Prozesse und Engpaesse', copy: 'Wir strukturieren die relevanten Schrittabfolgen, schauen auf manuelle Brueche und identifizieren, wo Automatisierung oder KI wirklich belastbare Entlastung bringt.', highlight: 'Im Fokus der Analyse:', tiles: [{ title: 'Reibungspunkte', text: 'Wo heute Zeit verloren geht oder Informationen haengen bleiben.' }, { title: 'Systeme & Schnittstellen', text: 'Welche Tools beteiligt sind und wie Daten sauber fliessen koennen.' }] },
+      { step: 'Schritt 3', title: 'Konzeption einer klaren und tragfaehigen Loesung', copy: 'Auf Basis der Analyse entsteht ein Loesungskonzept mit Datenfluss, Rollen, Prioritaeten und einer sinnvollen Reihenfolge fuer die Umsetzung.', highlight: 'Das Konzept liefert:', tiles: [{ title: 'Umsetzungslogik', text: 'Wie der Prozess spaeter technisch und operativ sauber zusammenarbeitet.' }, { title: 'Praxisnahe Roadmap', text: 'Welche Teile sofort Sinn ergeben und wie der Ausbau anschliessen kann.' }] },
+      { step: 'Schritt 4', title: 'Umsetzung, Test und kontrollierter Rollout', copy: 'Wir bauen den definierten Prozess sauber auf, testen reale Faelle und sorgen dafuer, dass der neue Ablauf im Alltag verlaesslich funktioniert.', highlight: 'Im Rollout wichtig:', tiles: [{ title: 'Saubere Tests', text: 'Vor dem Livegang werden kritische Wege und Sonderfaelle durchgespielt.' }, { title: 'Ruhige Einfuehrung', text: 'Ihr Team erhaelt einen Prozess, der verstaendlich bleibt und nicht ueberfordert.' }] }
+    ];
+
+    const stepFieldMap = { 0: ['name', 'email', 'phone', 'company'], 1: ['industry', 'team_size', 'interest', 'urgency'], 2: ['preferred_date', 'preferred_time'], 3: ['project_summary', 'budget'] };
+    let currentStep = 0;
+
+    function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 12); }
+
+    function toggleNav() {
+      const isOpen = header.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    navToggle.addEventListener('click', toggleNav);
+    document.querySelectorAll('.nav a').forEach((link) => {
+      link.addEventListener('click', () => {
+        header.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      button.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach((faqItem) => {
+          faqItem.classList.remove('open');
+          faqItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          faqItem.querySelector('.faq-answer').style.maxHeight = '0px';
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    function renderProcessStep(index) {
+      const step = processSteps[index];
+      processButtons.forEach((button, buttonIndex) => {
+        const isActive = buttonIndex === index;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+      });
+      progressSegments.forEach((segment, segmentIndex) => segment.classList.toggle('active', segmentIndex <= index));
+      document.querySelector('.step-stage .eyebrow').textContent = step.step;
+      processTitle.textContent = step.title;
+      processCopy.textContent = step.copy;
+      processHighlight.textContent = step.highlight;
+      processTiles.innerHTML = step.tiles.map((tile) => `<div class="mini-tile"><h4>${tile.title}</h4><p>${tile.text}</p></div>`).join('');
+    }
+
+    processButtons.forEach((button) => button.addEventListener('click', () => renderProcessStep(Number(button.dataset.stepTarget))));
+
+    function getFieldValue(name) {
+      if (name === 'interest') return Array.from(form.querySelectorAll('input[name="interest"]:checked')).map((input) => input.value);
+      if (name === 'urgency' || name === 'budget') {
+        const checked = form.querySelector(`input[name="${name}"]:checked`);
+        return checked ? checked.value : '';
+      }
+      const field = form.elements[name];
+      return field ? field.value.trim() : '';
+    }
+
+    function setError(name, message) {
+      const target = form.querySelector(`[data-error-for="${name}"]`);
+      if (target) target.textContent = message;
+    }
+
+    function clearStepErrors(stepIndex) {
+      (stepFieldMap[stepIndex] || []).forEach((fieldName) => setError(fieldName, ''));
+    }
+
+    function validateStep(stepIndex) {
+      clearStepErrors(stepIndex);
+      let isValid = true;
+      if (stepIndex === 0) {
+        const name = getFieldValue('name');
+        const email = getFieldValue('email');
+        const phone = getFieldValue('phone');
+        const company = getFieldValue('company');
+        if (!name) { setError('name', 'Bitte geben Sie Ihren Namen ein.'); isValid = false; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('email', 'Bitte geben Sie eine gueltige E-Mail-Adresse ein.'); isValid = false; }
+        if (!phone) { setError('phone', 'Bitte geben Sie eine Telefonnummer ein.'); isValid = false; }
+        if (!company) { setError('company', 'Bitte geben Sie Ihren Firmennamen ein.'); isValid = false; }
+      }
+      if (stepIndex === 1) {
+        if (!getFieldValue('industry')) { setError('industry', 'Bitte waehlen Sie eine Branche aus.'); isValid = false; }
+        if (!getFieldValue('team_size')) { setError('team_size', 'Bitte waehlen Sie eine Teamgroesse aus.'); isValid = false; }
+        if (getFieldValue('interest').length === 0) { setError('interest', 'Bitte waehlen Sie mindestens ein Interessensfeld aus.'); isValid = false; }
+        if (!getFieldValue('urgency')) { setError('urgency', 'Bitte geben Sie an, wie dringend das Thema ist.'); isValid = false; }
+      }
+      if (stepIndex === 2) {
+        if (!getFieldValue('preferred_date')) { setError('preferred_date', 'Bitte waehlen Sie ein Wunschdatum aus.'); isValid = false; }
+        if (!getFieldValue('preferred_time')) { setError('preferred_time', 'Bitte waehlen Sie eine Wunschzeit aus.'); isValid = false; }
+      }
+      if (stepIndex === 3) {
+        if (!getFieldValue('project_summary')) { setError('project_summary', 'Bitte beschreiben Sie Ihr Anliegen kurz.'); isValid = false; }
+        if (!getFieldValue('budget')) { setError('budget', 'Bitte waehlen Sie einen Budgetrahmen aus.'); isValid = false; }
+      }
+      return isValid;
+    }
+
+    function updateReview() {
+      const summary = [
+        ['Kontaktdaten', `${getFieldValue('name')}\n${getFieldValue('email')}\n${getFieldValue('phone')}\n${getFieldValue('company')}`],
+        ['Qualifizierung', `${getFieldValue('industry')} | ${getFieldValue('team_size')}\nInteressen: ${getFieldValue('interest').join(', ')}\nDringlichkeit: ${getFieldValue('urgency')}`],
+        ['Terminwunsch', `${getFieldValue('preferred_date')} um ${getFieldValue('preferred_time')}${getFieldValue('alternate_time') ? `\nAlternative: ${getFieldValue('alternate_time')}` : ''}`],
+        ['Anliegen', `${getFieldValue('project_summary')}\nBudget: ${getFieldValue('budget')}`]
+      ];
+      reviewList.innerHTML = summary.map(([title, value]) => `<div class="review-item"><strong>${title}</strong><p>${value || 'Keine Angabe'}</p></div>`).join('');
+    }
+
+    function updateFormUI() {
+      panels.forEach((panel, index) => panel.classList.toggle('active', index === currentStep));
+      stepIndicators.forEach((indicator, index) => indicator.classList.toggle('active', index === currentStep));
+      progressBar.style.width = `${((currentStep + 1) / panels.length) * 100}%`;
+      prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+      nextBtn.textContent = currentStep === panels.length - 1 ? 'Demo-Anfrage absenden' : 'Weiter';
+      if (currentStep === panels.length - 1) updateReview();
+    }
+
+    function collectFormData() {
+      return {
+        name: getFieldValue('name'),
+        email: getFieldValue('email'),
+        phone: getFieldValue('phone'),
+        company: getFieldValue('company'),
+        industry: getFieldValue('industry'),
+        team_size: getFieldValue('team_size'),
+        interest: getFieldValue('interest'),
+        urgency: getFieldValue('urgency'),
+        preferred_date: getFieldValue('preferred_date'),
+        preferred_time: getFieldValue('preferred_time'),
+        alternate_time: getFieldValue('alternate_time'),
+        project_summary: getFieldValue('project_summary'),
+        budget: getFieldValue('budget'),
+        submitted_at: new Date().toISOString()
+      };
+    }
+
+    async function handleSubmit() {
+      const payload = collectFormData();
+      const WEBHOOK_URL = 'HIER_WEBHOOK_EINFUEGEN';
+
+      // Webhook-Integration vorbereiten:
+      // await fetch(WEBHOOK_URL, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(payload)
+      // });
+
+      console.log('Demo submit payload:', payload, WEBHOOK_URL);
+      form.style.display = 'none';
+      consultationShell.classList.add('is-submitted');
+      successState.classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', async () => {
+      if (currentStep < panels.length - 1) {
+        if (!validateStep(currentStep)) return;
+        currentStep += 1;
+        updateFormUI();
+        return;
+      }
+      const firstInvalid = [0, 1, 2, 3].find((stepIndex) => !validateStep(stepIndex));
+      if (typeof firstInvalid === 'number') {
+        currentStep = firstInvalid;
+        updateFormUI();
+        return;
+      }
+      nextBtn.disabled = true;
+      nextBtn.textContent = 'Wird verarbeitet...';
+      try {
+        await handleSubmit();
+      } finally {
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Demo-Anfrage absenden';
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentStep === 0) return;
+      currentStep -= 1;
+      updateFormUI();
+    });
+
+    form.addEventListener('submit', (event) => event.preventDefault());
+    updateFormUI();
+    renderProcessStep(0);
+  </script>
+</body>
+</html>
